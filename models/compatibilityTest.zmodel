@@ -1,0 +1,15 @@
+
+ import "./user.zmodel"  
+
+model CompatibilityTest {
+
+    id        String    @id @default(uuid())  
+    testResult String?      
+    testTime  String?      
+
+studentId String?      
+    student   User?      @relation(fields: [studentId], references: [id], name:"student")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

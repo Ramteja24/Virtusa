@@ -1,0 +1,18 @@
+
+ import "./user.zmodel"  
+ import "./exam.zmodel"  
+
+model StudentSubmission {
+
+    id        String    @id @default(uuid())  
+    submissionData String?      
+    submissionTime String?      
+
+studentId String?      
+    student   User?      @relation(fields: [studentId], references: [id], name:"student")  
+    examId    String?      
+    exam      Exam?      @relation(fields: [examId], references: [id], name:"exam")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

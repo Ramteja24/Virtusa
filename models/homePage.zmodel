@@ -1,0 +1,12 @@
+
+
+model HomePage {
+
+    id        String    @id @default(uuid())  
+    title     String      
+    content   String?      
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

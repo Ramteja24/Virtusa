@@ -1,0 +1,20 @@
+
+ import "./user.zmodel"  
+ import "./studentSubmission.zmodel"  
+ import "./result.zmodel"  
+
+model Exam {
+
+    id        String    @id @default(uuid())  
+    title     String      
+    description String?      
+    type      String?      
+
+createdById String?      
+    createdBy User?      @relation(fields: [createdById], references: [id], name:"createdBy")  
+    studentSubmissions StudentSubmission[] @relation("exam")  
+    results   Result[]  @relation("exam")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}
